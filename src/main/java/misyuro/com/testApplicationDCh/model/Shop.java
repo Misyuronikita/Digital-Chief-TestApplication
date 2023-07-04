@@ -8,7 +8,6 @@ public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String name; //Наименование магазина
     private String address; //Адрес расположения
     private String owner; //Владелец
