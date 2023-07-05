@@ -2,6 +2,8 @@ package misyuro.com.testApplicationDCh.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -12,16 +14,19 @@ public class Product {
     private Double price;
     private String category;
     private String description;
-    private Integer shop_id;
+    private String manufacturer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shop_id")
+    private Shop shop;
 
     public Product(String name, Double price,
-                   String category, String description,
-                   Integer shop_id) {
+                   String category, String description, String manufacturer) {
         this.name = name;
         this.price = price;
         this.category = category;
         this.description = description;
-        this.shop_id = shop_id;
+        this.manufacturer = manufacturer;
     }
 
     public Product() {}
@@ -61,12 +66,11 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Integer getShop_id() {
-        return shop_id;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    public void setShop_id(Integer shop_id) {
-        this.shop_id = shop_id;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }

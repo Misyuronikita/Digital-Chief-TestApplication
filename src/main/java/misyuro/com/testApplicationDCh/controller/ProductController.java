@@ -46,7 +46,7 @@ public class ProductController {
         current.setPrice(Double.parseDouble(body.get("price")));
         current.setCategory(body.get("category"));
         current.setDescription(body.get("description"));
-        current.setShop_id(Integer.parseInt(body.get("shop_id")));
+        current.setManufacturer(body.get("manufacturer"));
 
         productRepository.save(current);
 
@@ -59,9 +59,9 @@ public class ProductController {
         Double price = Double.parseDouble(body.get("price"));
         String category = body.get("category");
         String description = body.get("description");
-        Integer shop_id = Integer.parseInt(body.get("shop_id"));
+        String manufacturer = body.get("manufacturer");
 
-        Product product = new Product(name, price, category, description, shop_id);
+        Product product = new Product(name, price, category, description, manufacturer);
         return productRepository.save(product);
     }
 

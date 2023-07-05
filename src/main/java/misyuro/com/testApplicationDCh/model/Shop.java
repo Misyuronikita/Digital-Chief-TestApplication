@@ -2,6 +2,9 @@ package misyuro.com.testApplicationDCh.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "shops")
 public class Shop {
@@ -13,6 +16,11 @@ public class Shop {
     private String owner; //Владелец
     private String phone; //Номер телефона
     private Integer amount; //Количество магазинов в сети
+
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products = new ArrayList<Product>();
+
+
 
     public Shop(){};
 
